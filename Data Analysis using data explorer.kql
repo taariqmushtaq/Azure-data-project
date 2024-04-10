@@ -1,0 +1,37 @@
+
+/*Create a Data Explorer pool
+In Synapse Studio, on the left-side pane, select Manage and then Data Explorer pools
+select New, and then enter the following details on the Basics tab
+1) Setting	Suggested value	Description
+2) Data Explorer pool name	contosodataexplorer	This is the name that the Data Explorer pool will have.
+3) Workload	Compute optimized	This workload provides a higher CPU to SSD storage ratio.
+4) Node size	Small (4 cores)	Set this to the smallest size to reduce costs for this quickstart
+select Review + create > Create. Your Data Explorer pool will start the provisioning process.
+*/
+
+
+
+/*Create a Data Explorer database
+In Synapse Studio, on the left-side pane, select Data.
+Select + (Add new resource) > Data Explorer database, and paste the following information:
+1) Setting	Suggested value	Description
+2) Pool name	contosodataexplorer	The name of the Data Explorer pool to use
+3) Name	TestDatabase	The database name must be unique within the cluster.
+4) Default retention period	365	The time span (in days) for which it's guaranteed that the data is kept available to query. The time span is measured from the time that data is ingested.
+5) Default cache period	31	The time span (in days) for which to keep frequently queried data available in SSD storage or RAM, rather than in longer-term storage.
+Select Create to create the database. Creation typically takes less than a minute*/
+
+
+/* NOW 
+Ingest sample data and analyze with a simple query
+In Synapse Studio, on the left-side pane, select Develop.
+
+Under KQL scripts, Select + (Add new resource) > KQL script. On the right-side pane, you can name your script.
+In the Connect to menu, select contosodataexplorer.
+In the Use database menu, select TestDatabase.
+Paste in the following command, and select Run to create a StormEvents table.
+
+.create table StormEvents (StartTime: datetime, EndTime: datetime, EpisodeId: int, EventId: int, State: string, EventType: string, InjuriesDirect: int, InjuriesIndirect: int, DeathsDirect: int, DeathsIndirect: int, DamageProperty: int, DamageCrops: int, Source: string, BeginLocation: string, EndLocation: string, BeginLat: real, BeginLon: real, EndLat: real, EndLon: real, EpisodeNarrative: string, EventNarrative: string, StormSummary: dynamic)
+
+
+
